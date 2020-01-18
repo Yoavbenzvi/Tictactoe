@@ -81,7 +81,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>Tic Tac Toe App</h1>
+				<h1 className="header">Tic Tac Toe Game</h1>
 				<Status
 					player={this.state.player} 
 					setPlayer={(e) => this.setPlayer(e)} 
@@ -90,7 +90,7 @@ class App extends React.Component {
 				<div className="board">
 					{this.renderBoxes()}
 				</div> <br />
-				<button disabled={!this.state.winner} onClick={() => this.reset()} >Reset Game</button>
+				<button className="reset" onClick={() => this.reset()} >Reset Game</button>
 			</div>
 		)
 	}

@@ -1,13 +1,18 @@
+body {
+	font-family: "Century Gothic", Futura, sans-serif;
+}
+
 .container {
 	text-align: center;
 }
 
 .box {
-	width: 100px;
-	height: 100px;
-	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	border: 1.5px solid black;
 	display: inline-block;
-	line-height: 100px;
+	line-height: 200px;
+	font-size: 8rem;
 	transition: 0.4s;
 }
 
@@ -18,5 +23,20 @@
 .board {
 	display: inline-flex;
 	flex-wrap: wrap;
-	width: 306px;
+	width: 610px;
+}
+
+.header {
+	font-family: 'Roboto', sans-serif;
+	font-size: 3rem;
+	margin-bottom: 0.5rem;
+}
+
+.reset {
+	margin-top: 24px;
+	font-size: 2rem;
+	border: solid 1px grey;
+	border-radius: 20px;
+	border-style: outset;
+	padding: 8px;
 }

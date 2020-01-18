@@ -12,7 +12,7 @@ class ChoosePlayer extends React.Component {
 		return(
 			<div>	
 				<form onSubmit={(e) => this.handleForm(e)} >
-					Choose Player:
+					<span className="title">Choose Player:</span>
 					<label>
 						X
 						<input type="radio" name="player" value="X"/>
@@ -21,7 +21,7 @@ class ChoosePlayer extends React.Component {
 						O
 						<input type="radio" name="player" value="O"/>
 					</label>
-					<input type="submit" value="Start" />
+					<input className="start" type="submit" value="Start" />
 				</form>
 			</div>
 		)
