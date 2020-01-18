@@ -28,4 +28,4 @@ class ChoosePlayer extends React.Component {
 	}
 }
 
-export default ChoosePlayer
+export default ChoosePlayer;

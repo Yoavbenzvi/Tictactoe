@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import ChoosePlayer from './components/ChoosePlayer';
+import Status from './components/Status';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -24,16 +25,20 @@ class App extends React.Component {
 				["0", "4", "8"],
 				["2", "4", "6"]
 			]
+		this.checkMatch(winLines)	
+	}
 
+	checkMatch = (winLines) => {
 		for(let i = 0; i < winLines.length; i++) {
 			const [a, b, c] = winLines[i]
-			if(this.state.board[a] && this.state.board[a] === this.state.board[b] && this.state.board[a] === this.state.board[c]) {
-				alert('You Won!');
+			let boardVar = this.state.board
+			if(boardVar[a] && boardVar[a] === boardVar[b] && boardVar[a] === boardVar[c]) {
+				alert(`'Player ${this.state.player} Won!'`);
 				this.setState({
 					winner: this.state.player
 				})
 			}
-		}			
+		}		
 	}
 
 	handleClick = (index) => {
@@ -55,25 +60,37 @@ class App extends React.Component {
 		this.setState({ player })
 	}
 
-	render() {
-		const allBoxes = this.state.board.map(
+	renderBoxes() {
+		return(
+			this.state.board.map(
 			(box, index) => 
-			<div 
-				className="box" 
-				key={index} 
-				onClick={() => this.handleClick(index)}>
-					{box}
+			<div className="box" key={index} onClick={() => this.handleClick(index)}>
+				{box}
 			</div>)
+		)
+	}
 
-		let showChoosePlayer = this.state.player ? <h2>Next player is: {this.state.player}</h2> : <h2><ChoosePlayer player={(e) => this.setPlayer(e)}/></h2>
+	reset = () => {
+		this.setState({
+			board: Array(9).fill(null),
+			player: null,
+			winner: null,
+		})
+	}
 
+	render() {
 		return (
 			<div className="container">
 				<h1>Tic Tac Toe App</h1>
-				{showChoosePlayer}
+				<Status
+					player={this.state.player} 
+					setPlayer={(e) => this.setPlayer(e)} 
+					winner={this.state.winner}
+				/>
 				<div className="board">
-					{allBoxes}
-				</div>
+					{this.renderBoxes()}
+				</div> <br />
+				<button disabled={!this.state.winner} onClick={() => this.reset()} >Reset Game</button>
 			</div>
 		)
 	}
